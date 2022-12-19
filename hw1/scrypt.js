@@ -33,9 +33,18 @@ const sheetsInBox = 500;
 const officeNeeds = 1200;
 let period = 8;
 
-let officeNeedsForPeriod = officeNeeds * period / sheetsInBox;
+let paperAmountForPeriod = officeNeeds * period;
 
-console.log(officeNeedsForPeriod.toFixed());
+let officeNeedsForPeriod = null;
+if (paperAmountForPeriod % sheetsInBox === 0) {
+  officeNeedsForPeriod = paperAmountForPeriod / sheetsInBox;
+} else {
+  officeNeedsForPeriod = (paperAmountForPeriod - (paperAmountForPeriod % sheetsInBox)) / sheetsInBox + 1;
+}
+
+// let officeNeedsForPeriod = paperAmountForPeriod % sheetsInBox === 0 ? paperAmountForPeriod / sheetsInBox : (paperAmountForPeriod - (paperAmountForPeriod % sheetsInBox)) / sheetsInBox + 1;
+
+console.log(officeNeedsForPeriod);
 
 // 4*
 // Создать функцию, которая выведет в консоль номер этажа и номер подъезда по номеру квартиры. 
@@ -48,11 +57,26 @@ const roomNumber = 456;
 findPorchAndFloor(roomNumber, floors, roomsOnFloor);
 
 function findPorchAndFloor(roomNumber, floors, roomsOnFloor) {
+  let roomsInEachPorch = roomsOnFloor * floors;
+  let roomsInLastPorch = roomNumber % roomsInEachPorch;
 
-  let porch = (roomNumber-1)/(roomsOnFloor*floors);
-  let floor = ( (roomNumber-1) % (roomsOnFloor*floors) ) / roomsOnFloor;
+  let porch = null;
+  if(roomsInLastPorch === 0) { 
+    porch = roomNumber / roomsInEachPorch;
+  } else {
+    porch = (roomNumber - roomsInLastPorch) / roomsInEachPorch + 1;
+  }
 
-  console.log (`The room number ${roomNumber} is on ${floor.toFixed()}th floor, in ${porch.toFixed()}th porch.`);
+  let floor = null;
+  let roomsAmount = roomsInLastPorch % roomsOnFloor;
+
+  if (roomsAmount === 0) {
+    floor = roomsInLastPorch / roomsOnFloor;
+  } else {
+    floor = (roomsInLastPorch - roomsAmount) / roomsOnFloor + 1;
+  }
+
+  console.log (`The room number ${roomNumber} is on ${floor}th floor, in ${porch}th porch.`);
 
 }
 
