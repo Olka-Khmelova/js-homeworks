@@ -16,10 +16,6 @@ const Emploee = function(employee) {
         get(){
            return `${this.surname} ${this.name}`
         },
-        set(value){
-           console.log(value)
-           return `${this.surname} ${this.name}`
-        }
      });
        //     Exersice 7*
     Object.defineProperty(this, 'fullInfo', {
