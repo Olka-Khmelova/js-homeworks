@@ -11,12 +11,20 @@ const citiesAndCountries = {
 	'Вена': 'Австрия',
 };
 
+//my
 const result = [];
 
-for (capital in citiesAndCountries) {
+for (const capital in citiesAndCountries) {
 	result.push(`${capital} - это ${citiesAndCountries[capital]}`);
 }
 console.log(result);
+
+/* *************************master-class variant
+let result = [];
+for (const capital in citiesAndCountries) {
+result[result.length] = `${capital} - это ${citiesAndCountries[capital]}`;
+}
+console.log(result);*/
 
 // 2
 // Создать функцию которая выведет многомерный массив A. Данный массив содержит в себе список других массивов B. Массивы B должны содержать по 3 значения. Максимальное значение (в примере это переменная amount) должно делится на 3 нацело.
@@ -40,6 +48,18 @@ function getArray(number) {
 	}
 	console.log(arr);
 }
+
+/* *************************master-class variant
+const arr2DArray = [];
+for(let i = 1; i <= amount; i+=3) {
+	const innerArr = [];
+	for(let j = 0; j < 3; j++) {
+		innerArr[innerArr.length] = j + i;
+	}
+	arr2DArray[arr2DArray.length] = innerArr;
+}
+
+console.log(arr2DArray); */
 
 // 3
 // Cоздать объект с названиями дней недели. Где ключами будут ru и en, a значением свойства ru будет массив с названиями дней недели на русском, а en - на английском. После написать функцию которая будет выводить в консоль название дня недели пользуясь выше созданным объектом. Все дни недели начинаются с 1 и заканичаются цифрой 7 (1- понедельник, 7 - воскресенье). Функция хранит переменную lang - название языка дня недели и переменную day - число дня недели. 
@@ -132,3 +152,19 @@ function getIntegerNumber(array, integerArray){
 	console.log(total);
 }
 
+/* *************************master-class variant
+const biteArr = [0, 1, 0, 1];
+
+let num = 1;
+let resultIntegral = 0;
+
+for(let i = biteArr.length - 1; i >= 0; i--) {
+	const bite = biteArr[i];
+	if(bite) {
+		resultIntegral += num;
+	}
+
+	num *= 2;
+}
+console.log(resultIntegral);
+*/
