@@ -20,11 +20,12 @@ const Emploee = function(employee) {
        //     Exersice 7*
     Object.defineProperty(this, 'fullInfo', {
         get(){
-            let message = '';
+            let message = [];
             for(const key in this){
-                message += `${key} - ${this[key]}, `;
-             }
-             return message;
+
+                message.push(`${key} - ${this[key]}`);
+            }
+             return message.join(", ");
         },
         set(value) {
             for(const key in this){
